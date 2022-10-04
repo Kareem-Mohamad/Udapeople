@@ -1,7 +1,7 @@
 version: 2.1
 
 commands:
-  Install_AWSCLI:
+  install_awscli:
     description: Install AWS CLI V2
     steps:
       - run:
@@ -10,7 +10,7 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
-  Install_Ansible:
+  install_ansible:
     description: Install Ansible V2
     steps:
       name: Install Ansible V2
@@ -148,8 +148,8 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - Checkout
-      - Install_AWSCLI
+      - checkout
+      - install_awscli
       - run:
           name: Ensure back-end infrastructure exists
           command: |
