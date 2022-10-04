@@ -13,12 +13,13 @@ commands:
   install_ansible:
     description: Install Ansible V2
     steps:
-      name: Install Ansible V2
-      command: |
-        sudo apt update
-        sudo apt install software-properties-common
-        sudo add-apt-repository --yes --update ppa:ansible/ansible
-        sudo apt install ansible
+      - run:
+          name: Install Ansible V2
+          command: |
+            sudo apt update
+            sudo apt install software-properties-common
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible
 #   destroy-environment:
 #     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
 #     parameters:
