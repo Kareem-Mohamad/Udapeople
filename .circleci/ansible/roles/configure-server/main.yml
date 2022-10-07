@@ -1,0 +1,30 @@
+- name: "Add Node.js from Nodesource"
+  shell: |
+    curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+#    sudo apt -y upgrade
+#    sudo apt install -y nodejs
+
+- name: "install node 13.X"
+  become: true
+  apt:
+    name: ["node.js"]
+    state: latest
+    update_cache: yes
+
+- name: "install pm2 globally"
+  become: true
+  npm:
+    name: pm2
+    global: yes
+    # production: yes
+    # state: present
+
+# - name: "copy files from CircleCI to server"
+#   copy:
+#     src: /root/project/backend
+#     dest: /home/ubuntu
+
+# - name: "install package dependencies"
+#   shell: |
+#     cd /home/ubuntu/backend    
+#     npm install 
