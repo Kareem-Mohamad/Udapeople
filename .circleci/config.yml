@@ -219,7 +219,7 @@ jobs:
 
   run-migrations:
     docker:
-      - image: circleci/node:13-alpine
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_awscli
