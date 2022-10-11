@@ -173,8 +173,7 @@ jobs:
               --template-file .circleci/files/backend.yml \
               --tags project=Udapeople \
               --stack-name "Udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
-              
+              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"                
       - run:
           name: Ensure front-end infrastructure exist
           command: |
@@ -204,21 +203,17 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - install_ansible
       - add_ssh_keys:
           fingerprints: [ed:29:75:7e:d7:f5:9d:f8:7e:b1:de:0e:6e:6d:1a:8b]
       - attach_workspace:
-          at: ~/
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update --no-cache ansible tar gzip aws-cli openssh        
+          at: ~/      
       - run:
           name: Configure server
           command: |
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
-#          no_output_timeout: 30m
       # Here's where you will add some code to rollback on failure
       - destroy-environment
 
