@@ -9,14 +9,14 @@
     dest: ~/backend-app
 
 - name: "Installing Node Dependencies"
-  # become: true
-  # apt:
-  #   name: ["nodejs", "npm"]
-  #   state: latest
-  #   update_cache: yes
-- shell: |
-    cd ~/backend-app
-    npm install
+  become: true
+  apt:
+    name: ["nodejs", "npm"]
+    state: latest
+    update_cache: yes
+# - shell: |
+#     cd ~/backend-app
+#     npm install
 
 - name: "Executing Node App With PM2"
   shell: |
