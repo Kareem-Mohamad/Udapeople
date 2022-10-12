@@ -17,7 +17,7 @@
   #   update_cache: yes
 - shell: |
     cd ~/backend-app
-    npm i
+    npm install
 
 - name: "Executing Node App With PM2"
   shell: |
