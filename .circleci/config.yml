@@ -369,6 +369,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - install_awscli
       - run:
           name: Save old stack workflow id to KVDB
           command: |
@@ -389,7 +390,6 @@ jobs:
       # Here's where you will add some code to rollback on failure  
       - destroy-environment
       - revert-migrations 
-
 
   cleanup:
     docker:
