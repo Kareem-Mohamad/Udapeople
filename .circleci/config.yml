@@ -353,14 +353,12 @@ jobs:
           command: |
             FRONTEND_WEBSITE="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com/#/employees"
             echo ${FRONTEND_WEBSITE}
-            
             if curl -s ${FRONTEND_WEBSITE} | grep "Welcome"
             then
               return 1
             else
               return 2
             fi
-
         # Here's where you will add some code to rollback on failure
       - destroy-environment
       - revert-migrations 
