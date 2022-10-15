@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  group_by: [Alertname]
+  receiver: email-me
+
+receivers:
+- name: email-me
+  email_configs:
+  - to: Kareem.Elzehairy@gmail.com
+    from: Kareem.Elzehairy@gmail.com
+    send_resolved: true
+    smarthost: smtp.gmail.com:587
+    auth_username: Kareem.Elzehairy@gmail.com
+    auth_identity: Kareem.Elzehairy@gmail.com
+    auth_password: etknvnnwegmzlocd
